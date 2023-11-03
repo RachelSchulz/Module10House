@@ -11,6 +11,12 @@
 	</style>
 	<script>
 		function checkForm () {
+			document.querySelector("#errAdd").innerHTML = "";
+			document.querySelector("#errCity").innerHTML = "";
+			document.querySelector("#errState").innerHTML = "";
+			document.querySelector("#errBed").innerHTML = "";
+			document.querySelector("#errBath").innerHTML = "";
+			
 			if (document.querySelector("#address").value == "" || document.querySelector("#address").value == null) {
 				event.preventDefault();
 				document.querySelector("#errAdd").innerHTML = "Error - Required Field";
@@ -32,6 +38,15 @@
 				document.querySelector("#errBath").innerHTML = "Error - Required Field, Select Number of Bathrooms";
 			}
 		}
+		
+		function resetForm() {
+			document.querySelector("#errAdd").innerHTML = "";
+			document.querySelector("#errCity").innerHTML = "";
+			document.querySelector("#errState").innerHTML = "";
+			document.querySelector("#errBed").innerHTML = "";
+			document.querySelector("#errBath").innerHTML = "";
+		}
+		
 	</script>
 	
 </head>
@@ -143,7 +158,8 @@
 			<span class="errMsg" id="errBath"></span>
 		</div>
 		<div class="form-group">
-			<input name="submit" type="submit" value="submit" />
+			<input name="submit" type="submit" value="Submit" />
+			<input name="reset" type="reset" value="Reset Form" onclick="resetForm()"/>
 		</div>
 	</form>
 	<p><a href="viewAll">View All Houses</a></p>
