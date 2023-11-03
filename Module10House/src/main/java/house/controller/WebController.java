@@ -8,6 +8,7 @@ package house.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import house.beans.House;
 import house.repository.IHouseRepository;
+import jakarta.validation.Valid;
 
 /**
  * @author Rachel Schulz - rsschulz
@@ -47,6 +49,16 @@ public class WebController {
 		repo.save(h);
 		return viewAllHouses(model);
 	}
+	
+	/*@PostMapping("/inputHouse") 
+	public String addNewHouse(@Valid House h, Errors errors, Model model) {
+		if (null != errors && errors.getErrorCount() > 0) {
+			return "input";
+		} else {
+			repo.save(h);
+			return viewAllHouses(model);
+		}
+	}*/
 	
 	@GetMapping("/edit/{id}")
 	public String showUpdateHouse(@PathVariable("id") long id, Model model) {
